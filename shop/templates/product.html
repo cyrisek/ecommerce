@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block product %}
+<div class="container-fluid !direction !spacing">
+    {{ object.get_category_display }}
+    <h6 class="card-subtitle mb-2 text-muted ">
+        {% if object.discount_price %}
+        {{object.discount_price}}
+        {% else %}
+        {{object.price}}
+        {% endif %}
+    </h6>
+    {{ object.title }}
+    {{object.description}}
+    <a class="btn btn-primary btn-sm " href="{{object.get_add_to_cart_url}}">Add to Cart</a>
+    <a class="btn btn-danger btn-sm " href="{{object.get_remove_from_cart_url}}">Remove from Cart</a>
+</div>
+
+{% endblock %}

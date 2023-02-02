@@ -3,7 +3,25 @@
 {% block content %}
 <h2>here is the list of items </h2>
 
-{% for item in items %}
-{{item}}
+{% for item in object_list %}
+<div class="card" style="width:18rem;">
+    <a href="{{ item.get_url }}">
+        <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+            class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title">{{item.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted ">{{item.get_category_display}}</h6>
+        <p class="card-text">{{item.description}}</p>
+        <h6 class="card-subtitle mb-2 text-muted ">
+            {% if item.discount_price %}
+            {{item.discount_price}}
+            {% else %}
+            {{item.price}}
+            {% endif %}
+        </h6>
+    </div>
+</div>
+
 {% endfor %}
 {% endblock %}
