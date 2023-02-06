@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>here is the list of items </h2>
+
+{% for item in object_list %}
+<div class="card" style="width:18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Order Summary</h5>
+        <h6 class="card-subtitle mb-2 text-muted ">{{item.get_category_display}}</h6>
+        <p class="card-text">{{item.description}}</p>
+        <h6 class="card-subtitle mb-2 text-muted ">
+            {% if item.discount_price %}
+            {{item.discount_price}}
+            {% else %}
+            {{item.price}}
+            {% endif %}
+        </h6>
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load cart_template_tags %}
 
 {% block product %}
 <div class="container-fluid !direction !spacing">
@@ -14,6 +15,8 @@
     {{object.description}}
     <a class="btn btn-primary btn-sm " href="{{object.get_add_to_cart_url}}">Add to Cart</a>
     <a class="btn btn-danger btn-sm " href="{{object.get_remove_from_cart_url}}">Remove from Cart</a>
+    <span class=""> {{ request.user|cart_item_count }} </span>
+    <i class="fas fa-shopping-cart"></i>
 </div>
 
 {% endblock %}
