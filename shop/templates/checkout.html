@@ -5,6 +5,10 @@
     <form>
         {% csrf_token %}
         {{ form|crispy }}
+        <div class="md-form mb-5">
+            {{ form.street_address }}
+            <label for="address">Address</label>
+        </div>
         <button class="btn btn-primary" type="submit">Checkout</button>
     </form>
 </main>
