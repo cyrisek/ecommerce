@@ -13,4 +13,7 @@ urlpatterns = [
          views.remove_from_cart, name='remove_from_cart'),
     path('remove_item_from_cart/<slug>',
          views.remove_single_item_from_cart, name='remove_single_item_from_cart'),
+    path('add-coupon/', views.AddCouponView.as_view(), name='add-coupon'),
+    path('payment/<payment_option>', views.PaymentView.as_view(), name="payment"),
+    path('request-refund/', views.RequestRefundView.as_view(), name='request-refund')
 ]

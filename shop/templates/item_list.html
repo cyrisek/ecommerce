@@ -6,8 +6,7 @@
 {% for item in object_list %}
 <div class="card" style="width:18rem;">
     <a href="{{ item.get_url }}">
-        <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-            class="card-img-top" alt="...">
+        <img src="{{ item.image }}" class="card-img-top" alt="...">
     </a>
     <div class="card-body">
         <h5 class="card-title">{{item.title}}</h5>

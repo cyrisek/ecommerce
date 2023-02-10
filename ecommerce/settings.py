@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "django_countries",
+
 ]
 
 SITE_ID = 1
@@ -130,6 +131,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+
+# Media root
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -148,3 +154,7 @@ AUTHENTICATION_BACKENDS = [
 # crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# stripe key
+
+STRIPE_SECRET_KEY = 'sk_test_51MZc67Ei2v3y93NXSL5vAnzynT9MEvSQPdovy386xpNjD9cRCLMbaoykgUA4qjuxoCGCdoIJNXAfkNMTrxGlzgcG004rET9a1u'
