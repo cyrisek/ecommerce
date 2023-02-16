@@ -23,7 +23,7 @@
                         <td>{{ order_item.item.title }}</td>
                         <td>{{ order_item.item.price }}</td>
                         <td>
-                            <a href="{% url 'shop:remove-single-item-from-cart' order_item.item.slug %}"><i
+                            <a href="{% url 'shop:remove-item-from-cart' order_item.item.slug %}"><i
                                     class="fas fa-minus mr-2"></i></a>
                             {{ order_item.quantity }}
                             <a href="{% url 'shop:add-to-cart' order_item.item.slug %}"><i
