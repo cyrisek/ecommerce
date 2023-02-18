@@ -4,6 +4,7 @@ from django.db.models import Sum
 from django.conf import settings
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
+from decimal import Decimal
 
 
 CATEGORY_CHOICES = (
@@ -38,8 +39,9 @@ class UserProfile(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
-    price = models.FloatField()
-    discount_price = models.FloatField(blank=True, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    discount_price = models.DecimalField(
+        max_digits=10, decimal_places=2, blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
@@ -76,18 +78,18 @@ class OrderItem(models.Model):
         return f"{self.quantity} of {self.item.title}"
 
     def get_total_item_price(self):
-        return self.quantity * self.item.price
+        return self.quantity * Decimal(self.item.price)
 
     def get_total_discount_price(self):
         return self.quantity * self.item.discount_price
 
     def get_amout_saved(self):
-        return self.get_total_item_price() - self.get_total_discount_price()
+        return Decimal(self.get_total_item_price()) - Decimal(self.get_total_discount_price())
 
     def get_final_price(self):
         if self.item.discount_price:
-            return self.get_total_discount_price()
-        return self.get_total_item_price()
+            return Decimal(self.get_total_discount_price())
+        return Decimal(self.get_total_item_price())
 
 
 class Order(models.Model):
@@ -115,7 +117,7 @@ class Order(models.Model):
         return self.user.username
 
     def get_total(self):
-        total = 0
+        total = Decimal('0')
         for order_item in self.items.all():
             total += order_item.get_final_price()
         if self.coupon:
