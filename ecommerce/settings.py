@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'shop',
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,15 +41,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django.contrib.sites',
 
-    'shop',
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "django_countries",
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
-    "crispy_forms",
-    "crispy_bootstrap5",
-    "django_countries",
+    'rest_framework',
 
 ]
 
