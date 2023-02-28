@@ -25,14 +25,12 @@ SECRET_KEY = "django-insecure-x=5dh(ujy!1kiy(6981-=%kv@zngy2)=x=3a&j=)to*fxp@hvm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'shop',
-
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -50,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'rest_framework',
+
+    'shop',
 
 ]
 
